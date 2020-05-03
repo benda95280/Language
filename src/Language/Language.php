@@ -19,7 +19,6 @@ class Language extends PluginBase {
 	public function onEnable() {
 		static::$plugin = $this;
 		$this->saveDefaultConfig();
-		$this->getLogger()->info(TF::DARK_PURPLE.'Loaded successfully!'.base64_decode("DQogIF9fICAgICAgICAgICAgICAgICAgICAgICBfICAgICAgICAgICAgICAgICAgXyAgIF9fICAgIF9fICANCiAoICAvIF8gXyAgICAgL19fLyAgX18vLyAgLyApICAgICAgXyAnXyAvXy8gICBfKSAvICApLS8oX18pIA0KX18pLykoLy8gLykoLy8gICkoLy8gLy8pIChfXygpLykoLy8gLygvLykvICAgL19fKF9fLyAvIF9fLyAgDQogICAgICAgIC8gIC8gICAgICAgICAgICAgICAgIC8gIC8gICBfLyAgICAgICAgICAgICAgICAgICAgICA="));
 	}
 
 	/**
@@ -29,35 +28,6 @@ class Language extends PluginBase {
 		return static::$plugin;
 	}
 
-	/**
-	* @param Plugin $plugin
-	* @param Player $player
-	* @param string $params
-	*
-	* @return string
-	*/
-	public function getTranslate(Plugin $plugin, Player $player, string $params) : string{
-		$dir = $plugin->getDataFolder() . '/languages/';
-		if (!is_dir($dir)) {
-			mkdir($dir, 0477);
-		}
-
-		$language = $this->getLanguage($player);
-		$lang = new Config($dir . $language . '.yml');
-
-		if ($lang->exists($params)) {
-			return TF::colorize($lang->get($params));
-		}
-
-		foreach (array_diff(scandir($dir), [".", ".."]) as $filelang) {
-			$config = new Config($dir . $filelang, Config::YAML);
-			if ($config->exists($params)) {
-				return TF::colorize($config->get($params));
-			}
-		}
-		
-		return TF::colorize($params);
-	}
 
 	/**
 	* @param Player $player
@@ -106,6 +76,13 @@ class Language extends PluginBase {
 				$sender->sendMessage(TF::RED . 'The language ' . $default . ' not exists.');
 			}
 			return true;
+		}
+		else {
+			$sender->sendMessage(TF::RED . 'No command from console');
+			$sender->sendMessage(TF::GREEN . 'Language list: ');
+			foreach ($this->getLanguages() as $key => $value) {
+				$sender->sendMessage(TF::GREEN . $key . ' - ' . $value);
+			}
 		}
 		return true;
 	}
