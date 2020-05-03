@@ -1,5 +1,5 @@
 # MultiLanguage support for PocketMine
-Language api for PMMP
+Language api for PMMP - PocketmIne
 
 ## Commands available:
 
