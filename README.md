@@ -1,26 +1,38 @@
-# Language PocketMine
-Language api for servers of minecraft pe (bedrock edition)
+# MultiLanguage support for PocketMine
+Language api for PMMP
 
-## ¿How to usage the API?
+## Commands available:
 
-- Added instance of Language Plugin:
+```TXT
+/language list
+  Show all language availaible
+/ language <LanguageName>
+  Define the language for that player
+```
+
+## ¿How it works?
+```TXT
+The file 'config.yml' contain your language available in your server
+the file 'languages.yml' contain players language configuration
+  (This file is created on first usage of the command to set the language)
+```
+
+## ¿How to use the API?
+
+- Load Language Plugin:
 ```PHP
-use Language\Language;
+$languageManager = self::getInstance()->getServer()->getPluginManager()->getPlugin("Language");
 ```
 - Functions of Language API:
 ```PHP
-Language::getLanguage(Player $player); // return String 
-Language::getTranslate(Plugin $plugin, Player $player, string $params); // return string
+$langOfPlayer = $languageManager->getLanguage($player); // return String 
 ```
 
-### ¿How to added Language in Your Plugin?
+## ¿How may i use it?
 
 ```TXT
-- Add file Of language format in plugin data /languages/: eng.yml
-- Add prefix of translate example: 
-  - eng.yml > my.message: 'Wellcome'
-  - spa.yml > my.message: 'Bienvenido'
+- In your plugin, us the var $langOfPlayer to get the right language when sending message to player (Or item ...)
 ```
 
-### Credits
-This plugin create by **SharpyKurth**.
+## Credits
+This plugin create by **SharpyKurth**, edited by **Benda95280**
