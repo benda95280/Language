@@ -31,7 +31,7 @@ $langOfPlayer = $languageManager->getLanguage($player); // return String (ex: 'e
 ## ¿How may i use it?
 
 ```TXT
-- In your plugin, us the var $langOfPlayer to get the right language when sending message to player (Or item ...)
+- In your plugin, use the var $langOfPlayer to get the right language when sending message to player (Or item ...)
 ```
 
 ## Credits
