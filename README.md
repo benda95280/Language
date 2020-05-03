@@ -6,7 +6,7 @@ Language api for PMMP
 ```TXT
 /language list
   Show all language availaible
-/ language <LanguageName>
+/language <LanguageName>
   Define the language for that player
 ```
 
