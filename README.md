@@ -25,7 +25,7 @@ $languageManager = self::getInstance()->getServer()->getPluginManager()->getPlug
 ```
 - Functions of Language API:
 ```PHP
-$langOfPlayer = $languageManager->getLanguage($player); // return String 
+$langOfPlayer = $languageManager->getLanguage($player); // return String (ex: 'en_US')
 ```
 
 ## ¿How may i use it?
