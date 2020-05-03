@@ -35,4 +35,4 @@ $langOfPlayer = $languageManager->getLanguage($player); // return String (ex: 'e
 ```
 
 ## Credits
-This plugin create by **SharpyKurth**, edited by **Benda95280**
+This plugin was created by **SharpyKurth**, edited by **Benda95280**
